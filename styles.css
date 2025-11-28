@@ -1,0 +1,425 @@
+/* ---------------------------------------------------------
+   Font: Product Sans
+---------------------------------------------------------- */
+@font-face {
+  font-family: "Product Sans";
+  src: url("ProductSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ---------------------------------------------------------
+   Theme
+---------------------------------------------------------- */
+
+:root {
+  --bg: #000;
+  --card: #fff;
+
+  --text-main: #0a0a0a;
+  --text-soft: #363636;
+  --text-muted: #6d6d6d;
+
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 18px 48px rgba(0, 0, 0, 0.28);
+  --shadow-hover: 0 22px 65px rgba(0, 0, 0, 0.35);
+
+  --motion-fast: 140ms ease-out;
+  --motion-med: 220ms ease-out;
+}
+
+/* ---------------------------------------------------------
+   Body
+---------------------------------------------------------- */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Product Sans", sans-serif;
+  font-size: 17px;
+  color: var(--text-main);
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 28px;
+}
+
+/* ---------------------------------------------------------
+   App container
+---------------------------------------------------------- */
+
+.app-shell {
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Top app bar: Material You style card ---------- */
+
+.top-bar {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 10px 18px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.40);
+  transform: translateY(0);
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+  margin-bottom: 4px;
+}
+
+.top-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+}
+
+.top-bar-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Left side: logo + title */
+
+.title-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.title-logo {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+.title-logo img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.title-text-primary {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.title-text-secondary {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+/* Right side: data source chip */
+
+.upload-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.file-hint {
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.chip-label {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #f3f3f3;
+  color: #555;
+  font-size: 11px;
+  margin-right: 6px;
+}
+
+.chip-value {
+  font-weight: 600;
+  font-size: 12px;
+  color: #222;
+}
+
+.file-hint-sub {
+  color: #8a8a8a;
+  font-size: 11px;
+}
+
+/* Responsive: stack logo + text + chip on small screens */
+
+@media (max-width: 768px) {
+  .top-bar-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .upload-block {
+    justify-content: flex-start;
+  }
+
+  .file-hint {
+    text-align: left;
+  }
+}
+
+/* ---------------------------------------------------------
+   Status bar – floating white card with pills
+---------------------------------------------------------- */
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  background: var(--card);
+  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+
+  transform: translateY(0);
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.status-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* small chips inside status bar */
+
+.pill {
+  border-radius: var(--radius-pill);
+  padding: 5px 11px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3f3f3;
+  color: var(--text-soft);
+  border: none;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  cursor: default;
+}
+
+.pill-accent {
+  background: #111;
+  color: #f5f5f5;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #111;
+}
+
+.pill-badge {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: #f3f3f3;
+  color: var(--text-muted);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------------------------------------------------
+   Layout grid
+---------------------------------------------------------- */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 2fr;
+  gap: 24px;
+}
+
+@media (max-width: 850px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------
+   MAIN FLOATING WHITE CARDS
+---------------------------------------------------------- */
+
+.day-card,
+.meals-card {
+  background: var(--card);
+  color: var(--text-main);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  border: none;
+  box-shadow: var(--shadow-card);
+  transform: translateY(0px);
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.day-card:hover,
+.meals-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------------
+   DAY BUTTONS
+---------------------------------------------------------- */
+
+.day-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+}
+
+.day-btn {
+  cursor: pointer;
+  background: #fff;
+  color: var(--text-main);
+  padding: 14px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 66px;
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.day-btn-main {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.day-btn-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.day-btn:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* ACTIVE DAY: black pill */
+
+.day-btn.active {
+  background: #111;
+  color: #fff;
+  box-shadow: var(--shadow-hover);
+}
+
+.day-btn.active .day-btn-sub {
+  color: #dddddd;
+}
+
+/* ---------------------------------------------------------
+   MEALS SECTION
+---------------------------------------------------------- */
+
+.meals-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.meals-subtitle {
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+/* ---------------------------------------------------------
+   MEAL CARDS
+---------------------------------------------------------- */
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.meal-card {
+  background: var(--card);
+  color: var(--text-main);
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  box-shadow: var(--shadow-card);
+  transform: translateY(0px);
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.meal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Meal name */
+
+.meal-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* time text */
+
+.meal-time {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Meal items */
+
+.meal-items {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.58;
+  margin-top: 2px;
+}
+
+.meal-items span + span::before {
+  content: " • ";
+  opacity: 0.45;
+}
+
+/* ---------------------------------------------------------
+   Misc
+---------------------------------------------------------- */
+
+.error-text {
+  font-size: 13px;
+  color: #b00000;
+}
+
+.note-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}

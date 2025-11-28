@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IIT Jodhpur Mess Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Material-ish font stack:
+       - If you self-host Google Sans / Product Sans, load it separately and keep the family name.
+       - Roboto is used as a good fallback from Google Fonts.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global styles -->
+  <link rel="icon" type="image/png" href="images/IITJ_WHITE.png">
+  <link rel="apple-touch-icon" href="images/IITJ_WHITE.png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top bar -->
+    <div class="top-bar">
+        <div class="top-bar-main">
+            <div class="title-block">
+                <div class="title-logo">
+                    <img src="images/IITJ_COLOURED.png" alt="IITJ Logo">
+                </div>
+                <div>
+                    <div class="title-text-primary">Mess Menu Board</div>
+                    <div class="title-text-secondary">November 2025 mess menu</div>
+                </div>
+            </div>
+
+            <div class="upload-block">
+                <div class="file-hint">
+                    <span class="chip-label">Data source</span>
+                    <span class="chip-value">mess-menu-nov-2025.json</span><br />
+                    <span class="file-hint-sub">
+                    Days and meals are pre-computed from the converted file.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <div class="status-left">
+        <div class="pill pill-accent">
+          <div class="pill-dot"></div>
+          <span id="dataStatusText">Initializing…</span>
+        </div>
+        <div class="pill">
+          <span>Tip:</span>
+          <span class="pill-highlight">Today</span>
+          <span>is highlighted automatically if present.</span>
+        </div>
+      </div>
+      <div class="status-right">
+        <div class="pill-badge" id="lastUpdatedBadge">Updated: —</div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content-grid">
+      <!-- Left: Day selector -->
+      <div class="day-card">
+        <div class="day-card-header">
+          <div>
+            <div class="day-card-title">Days of the week</div>
+            <div class="day-card-sub">Choose a day to see its full menu</div>
+          </div>
+          <div id="todayBadge" class="today-badge" style="display: none;">
+            <span class="today-dot"></span>
+            <span id="todayText">Today</span>
+          </div>
+        </div>
+
+        <div id="dayButtonsContainer" class="day-buttons"></div>
+
+        <div id="dayEmptyState" class="empty-state">
+          <div class="empty-dot"></div>
+          <div>
+            <div>Waiting for the menu data to load…</div>
+            <div style="margin-top: 4px;">
+              Source file:
+              <strong>mess-menu-nov-2025.json</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Meals panel -->
+      <div class="meals-card">
+        <div class="meals-header">
+          <div class="meals-title-block">
+            <div class="meals-title" id="mealsTitle">No day selected</div>
+            <div class="meals-subtitle" id="mealsSubtitle">
+              Once the JSON is loaded, pick any day from the left.
+            </div>
+          </div>
+          <div class="day-chip">
+            <span class="day-chip-tag">Current day</span>
+            <span id="currentDayLabel">—</span>
+          </div>
+        </div>
+
+        <div id="mealsError" class="error-text" style="display: none;"></div>
+
+        <div id="mealsGrid" class="meals-grid"></div>
+
+        <div id="mealsEmptyState" class="empty-state">
+          <div class="empty-dot"></div>
+          <div>
+            <div>
+              Once a day is selected, you will see its
+              <strong>Breakfast, Lunch, Snacks, and Dinner</strong> here.
+            </div>
+            <div class="note-text">
+              Additional meal types defined in the JSON will appear automatically.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App logic -->
+  <script src="app.js"></script>
+</body>
+</html>
