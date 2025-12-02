@@ -403,6 +403,11 @@ body {
   color: var(--text-soft);
   line-height: 1.58;
   margin-top: 2px;
+
+  /* NEW: allow breaking very long tokens */
+  overflow-wrap: anywhere;    /* modern browsers */
+  word-wrap: break-word;      /* older name */
+  word-break: break-word;     /* extra safety */
 }
 
 .meal-items span + span::before {
