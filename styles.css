@@ -468,52 +468,64 @@ body {
   color: var(--text-muted);
 }
 
-/* ---------- Mobile layout tweaks for status bar ---------- */
+/* ---------- Mobile layout tweaks for status bar (fixed) ---------- */
 
 @media (max-width: 640px) {
+  /* force column layout for the status bar */
   .status-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    padding: 8px 10px;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 10px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
+  /* ensure left and right containers take full width and wrap nicely */
   .status-left,
   .status-right {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 6px;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
   }
 
-  /* Put "Loaded: …" + "Tip" on first row */
+  /* Row 1: "Loaded" + "Tip" */
   .status-left {
-    order: 1;
+    order: 1 !important;
   }
 
-  /* Put Veg/Non-Veg toggle + Updated badge on second row */
+  /* Row 2: Veg/Non-Veg toggle + Updated badge */
   .status-right {
-    order: 2;
-    justify-content: space-between;
-    align-items: center;
+    order: 2 !important;
+    justify-content: space-between !important;
   }
 
-  /* Make the Veg/Non-Veg toggle centered and not too wide */
+  /* Make the Veg/Non-Veg toggle compact and centered */
   .mess-toggle {
-    flex: 1 1 auto;
-    justify-content: center;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 4px !important;
   }
 
   .mess-toggle-btn {
-    padding: 5px 9px;
-    font-size: 11px;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
   }
 
   /* Slightly smaller pills on mobile */
   .pill,
   .pill-badge {
-    padding: 4px 8px;
-    font-size: 11px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  /* Keep "Updated: …" pushed to the right on row 2 */
+  .pill-badge {
+    margin-left: auto !important;
   }
 }
