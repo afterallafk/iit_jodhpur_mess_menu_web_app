@@ -5,7 +5,7 @@
 // -----------------------------------------------------------------------------
 
 // Path to your JSON file (same folder as index.html)
-const JSON_URL = "mess-menu-nov-2025.json";
+const JSON_URL = "mess-menu-dec-2025.json";
 
 // Order of days and meals for consistent UI
 const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -121,7 +121,7 @@ function showError(message) {
   mealsError.style.display = "block";
   mealsTitle.textContent = "Could not load menu";
   mealsSubtitle.textContent =
-    "Ensure mess-menu-nov-2025.json is present and follows the expected structure.";
+    "Ensure mess-menu-dec-2025.json is present and follows the expected structure.";
   dataStatusText.textContent = "Error loading data";
 
   mealsGrid.innerHTML = "";
