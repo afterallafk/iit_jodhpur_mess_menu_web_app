@@ -42,7 +42,7 @@
             <div class="upload-block">
                 <div class="file-hint">
                     <span class="chip-label">Data source</span>
-                    <span class="chip-value">mess-menu-dec-2025.json</span><br />
+                    <span class="chip-value">Veg / Non-Veg Mess</span><br />
                     <span class="file-hint-sub">
                     Days and meals are pre-computed from the converted file.
                     </span>
@@ -65,6 +65,11 @@
         </div>
       </div>
       <div class="status-right">
+        <div class="mess-toggle" aria-label="Select mess type">
+          <button class="mess-toggle-btn active" data-mess="veg">Veg Mess</button>
+          <button class="mess-toggle-btn" data-mess="nonveg">Non-Veg Mess</button>
+        </div>
+
         <div class="pill-badge" id="lastUpdatedBadge">Updated: —</div>
       </div>
     </div>
@@ -92,7 +97,7 @@
             <div>Waiting for the menu data to load…</div>
             <div style="margin-top: 4px;">
               Source file:
-              <strong>mess-menu-dec-2025.json</strong>.
+              <strong>Active mess JSON</strong>.
             </div>
           </div>
         </div>

@@ -4,8 +4,19 @@
 // CONFIG
 // -----------------------------------------------------------------------------
 
-// Path to your JSON file (same folder as index.html)
-const JSON_URL = "mess-menu-dec-2025.json";
+// Mess types and their JSON files (same folder as index.html)
+const MENU_CONFIG = {
+  veg: {
+    label: "Veg Mess",
+    file: "mess-menu-dec-veg.json",      // VEG file
+  },
+  nonveg: {
+    label: "Non-Veg Mess",
+    file: "mess-menu-dec-nonveg.json",    // NON-VEG file
+  },
+};
+
+let currentMessKey = "veg";
 
 // Order of days and meals for consistent UI
 const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -42,23 +53,86 @@ const todayText = document.getElementById("todayText");
 // BOOTSTRAP
 // -----------------------------------------------------------------------------
 
+// window.addEventListener("DOMContentLoaded", () => {
+//   currentDayLabel.textContent = getTodayName();
+
+//   if (!JSON_URL) {
+//     showError("No JSON_URL configured.");
+//     return;
+//   }
+
+//   dataStatusText.textContent = "Loading menu from JSON…";
+//   loadMenuFromJson(JSON_URL);
+// });
+
 window.addEventListener("DOMContentLoaded", () => {
   currentDayLabel.textContent = getTodayName();
+  initMessSwitching();
+});
 
-  if (!JSON_URL) {
-    showError("No JSON_URL configured.");
+// -----------------------------------------------------------------------------
+// MESS SWITCHING (Veg / Non-Veg)
+// -----------------------------------------------------------------------------
+
+function initMessSwitching() {
+  // Restore last choice from localStorage, if valid
+  const saved = localStorage.getItem("messType");
+  if (saved && MENU_CONFIG[saved]) {
+    currentMessKey = saved;
+  }
+
+  setupMessToggleUI();
+  loadCurrentMess();
+}
+
+function setupMessToggleUI() {
+  const buttons = document.querySelectorAll(".mess-toggle-btn");
+  if (!buttons || !buttons.length) {
     return;
   }
 
-  dataStatusText.textContent = "Loading menu from JSON…";
-  loadMenuFromJson(JSON_URL);
-});
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.mess;
+      if (!MENU_CONFIG[key] || key === currentMessKey) return;
+
+      currentMessKey = key;
+      localStorage.setItem("messType", key);
+      updateMessToggleUI();
+      loadCurrentMess();
+    });
+  });
+
+  updateMessToggleUI();
+}
+
+function updateMessToggleUI() {
+  const buttons = document.querySelectorAll(".mess-toggle-btn");
+  buttons.forEach((btn) => {
+    const key = btn.dataset.mess;
+    btn.classList.toggle("active", key === currentMessKey);
+  });
+}
+
+function loadCurrentMess() {
+  const config = MENU_CONFIG[currentMessKey];
+  if (!config) {
+    showError("Unknown mess type: " + currentMessKey);
+    return;
+  }
+
+  if (dataStatusText) {
+    dataStatusText.textContent = "Loading " + config.label + " menu…";
+  }
+
+  loadMenuFromJson(config.file, config.label);
+}
 
 // -----------------------------------------------------------------------------
 // LOAD FROM JSON
 // -----------------------------------------------------------------------------
 
-function loadMenuFromJson(url) {
+function loadMenuFromJson(url, messLabel) {
   fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -72,11 +146,12 @@ function loadMenuFromJson(url) {
       }
       menuData = data;
       availableDays = Object.keys(menuData || {});
-      updateUIAfterLoad(url);
+      updateUIAfterLoad(url, messLabel);
     })
     .catch((err) => {
       console.error(err);
-      showError("Could not load menu JSON from " + url + ".");
+      const label = messLabel ? ` (${messLabel})` : "";
+      showError("Could not load menu JSON from " + url + label + ".");
     });
 }
 
@@ -84,7 +159,7 @@ function loadMenuFromJson(url) {
 // UI UPDATE AFTER LOAD
 // -----------------------------------------------------------------------------
 
-function updateUIAfterLoad(label) {
+function updateUIAfterLoad(fileLabel, messLabel) {
   if (!availableDays.length) {
     showError("Menu JSON loaded, but no days were found.");
     return;
@@ -96,7 +171,8 @@ function updateUIAfterLoad(label) {
   activeDay = chooseInitialActiveDay();
   renderMealsForActiveDay();
 
-  dataStatusText.textContent = "Loaded: " + label;
+  const niceLabel = messLabel ? `${fileLabel} (${messLabel})` : fileLabel;
+  dataStatusText.textContent = "Loaded: " + niceLabel;
 
   const now = new Date();
   lastUpdatedBadge.textContent =
@@ -121,7 +197,7 @@ function showError(message) {
   mealsError.style.display = "block";
   mealsTitle.textContent = "Could not load menu";
   mealsSubtitle.textContent =
-    "Ensure mess-menu-dec-2025.json is present and follows the expected structure.";
+    "Ensure the menu JSON file is present and follows the expected structure.";
   dataStatusText.textContent = "Error loading data";
 
   mealsGrid.innerHTML = "";

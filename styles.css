@@ -249,6 +249,45 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
+/* ---------- Veg / Non-Veg toggle in status bar ---------- */
+
+.mess-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: #f3f3f3;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.mess-toggle-btn {
+  border: none;
+  outline: none;
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition:
+    background var(--motion-fast),
+    color var(--motion-fast),
+    transform var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+.mess-toggle-btn:hover {
+  transform: translateY(-1px);
+}
+
+.mess-toggle-btn.active {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
 /* ---------------------------------------------------------
    Layout grid
 ---------------------------------------------------------- */

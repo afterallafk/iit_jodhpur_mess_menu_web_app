@@ -6,7 +6,8 @@ const OFFLINE_URLS = [
   "./index.html",
   "./styles.css",
   "./app.js",
-  "./mess-menu-dec-2025.json",   // change name if your JSON file differs
+  "./mess-menu-dec-veg.json",       // Veg
+  "./mess-menu-dec-nonveg.json",    // Non-Veg
   "./ProductSans-Regular.ttf",
   "./image_web_app/IITJ_COLOURED_192.png",
   "./image_web_app/IITJ_COLOURED_512.png"
