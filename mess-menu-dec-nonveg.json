@@ -8,7 +8,7 @@
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -18,7 +18,10 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Moong Dal, Malai Kofta, Bhendi Peanut Fry, Seasonal Fruits (2 types)",
+        "Moong Dal",
+        "Malai Kofta",
+        "Bhendi Peanut Fry",
+        "Seasonal Fruits (2 types)",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Curd",
@@ -31,7 +34,8 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Veg Cutlet, Ketchup",
+        "Veg Cutlet", 
+        "Ketchup",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -40,7 +44,9 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Mix Dal, Mutter Masala, Boondi",
+        "Mix Dal",
+        "Mutter Masala",
+        "Boondi",
         "Egg Butter Masala",
         "Aata Roti/Multigrain Roti",
         "Curd",
@@ -61,7 +67,7 @@
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -71,7 +77,9 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Rajma Dal, Dum Aloo Banarasi, Mix Veg Dry",
+        "Rajma Dal",
+        "Dum Aloo Banarasi",
+        "Mix Veg Dry",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Lassi",
@@ -84,7 +92,8 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Bread Pakora, Ketchup",
+        "Bread Pakora",
+        "Ketchup",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -93,7 +102,9 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Khichdi, Aloo Gobi, Veg Chatpata",
+        "Khichdi",
+        "Aloo Gobi",
+        "Veg Chatpata",
         "Aata Roti/Multigrain Roti",
         "Ragi Roti",
         "Lizzat Papad",
@@ -108,13 +119,16 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Idli/ Fried Idli, Sambhar, Coconut Chutney, Tomato Chutney",
+        "Idli/ Fried Idli",
+        "Sambhar",
+        "Coconut Chutney",
+        "Tomato Chutney",
         "Boiled egg (2)",
         "Curd and Jalebi",
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -124,7 +138,9 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Masoor Dal, Kadhi pakoda, Dry Aloo Masala",
+        "Masoor Dal",
+        "Kadhi pakoda",
+        "Dry Aloo Masala",
         "Aata Roti/Multigrain Roti",
         "Curd",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
@@ -136,7 +152,8 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Pyaz Kachori, Chutney",
+        "Pyaz Kachori",
+        "Chutney",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -145,7 +162,9 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Lasooni Dal Tadka, Veg Korma, Carrot Halwa",
+        "Lasooni Dal Tadka",
+        "Veg Korma",
+        "Carrot Halwa",
         "Chicken Butter Masala",
         "Aata Roti/Multigrain Roti",
         "Veg Fried Rice",
@@ -161,12 +180,14 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Mix veg paratha, Chutney,Curd",
+        "Mix veg paratha",
+        "Chutney",
+        "Curd",
         "Banana(2)",
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -176,7 +197,10 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Channa Dal Fry, Dahi Baingan, Chilly Potato, Seasonal Fruits (2 types)",
+        "Channa Dal Fry",
+        "Dahi Baingan",
+        "Chilly Potato",
+        "Seasonal Fruits (2 types)",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Lassi",
@@ -189,7 +213,9 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Dhokla, Chutney / Sweet Corn",
+        "Dhokla",
+        "Chutney",
+        "Sweet Corn",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -198,7 +224,10 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Veg Fried Rice, Pindi Chole, Capsicum Masala, Dosa",
+        "Veg Fried Rice",
+        "Pindi Chole",
+        "Capsicum Masala",
+        "Dosa",
         "Aata Roti/Multigrain Roti",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
@@ -212,12 +241,14 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Uttapam, Sambhar, Coconut Chutney",
+        "Uttapam",
+        "Sambhar",
+        "Coconut Chutney",
         "Boiled egg (2)",
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -227,7 +258,9 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Dal Panchmahal, Cauliflower Fry, Hariyali Kofta",
+        "Dal Panchmahal",
+        "Cauliflower Fry",
+        "Hariyali Kofta",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Curd",
@@ -240,7 +273,8 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Samosa, Chutney",
+        "Samosa",
+        "Chutney",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -249,7 +283,11 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Moong Dal,Veg Biriyani, Alu Soyabin Dry,  Milk Barfi/Coconut Barfi",
+        "Moong Dal",
+        "Veg Biriyani",
+        "Alu Soyabin Dry",
+        "Milk Barfi",
+        "Coconut Barfi",
         "Egg curry",
         "Aata Roti/Multigrain Roti",
         "Fryums",
@@ -263,14 +301,17 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Aloo Pyaz Paratha, Curd, Mint Chutney, Pickle",
+        "Aloo Pyaz Paratha",
+        "Curd",
+        "Mint Chutney",
+        "Pickle",
         "Boiled egg (2)",
         "Curd",
         "Pickle",
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -280,7 +321,9 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Dal Tadka, Cabbage Pakoda, Mix Vegetables in Hot Garlic Sauce",
+        "Dal Tadka",
+        "Cabbage Pakoda",
+        "Mix Vegetables in Hot Garlic Sauce",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Curd",
@@ -302,7 +345,10 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Plain rice, Urad Dal, Chole Bhature, Aloo Palak",
+        "Plain rice",
+        "Urad Dal",
+        "Chole Bhature",
+        "Aloo Palak",
         "Aata Roti/Multigrain Roti",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
@@ -315,12 +361,14 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Masala Dosa, Sambhar, Coconut Chutney",
+        "Masala Dosa",
+        "Sambhar",
+        "Coconut Chutney",
         "Boiled egg (2)",
         "Butter",
         "Jam",
         "Sugar",
-        "Cornflakes-Oats (student can take only one)",
+        "Cornflakes-Oats",
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
@@ -330,7 +378,9 @@
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
-        "Dal Makhani, Veg Manchurian, Aloo Deep Fry",
+        "Dal Makhani",
+        "Veg Manchurian",
+        "Aloo Deep Fry",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
         "Curd",
@@ -352,7 +402,10 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
-        "Dal Tadka, Aloo Mutter Curry, Gulab Jamun,Raita",
+        "Dal Tadka",
+        "Aloo Mutter Curry",
+        "Gulab Jamun",
+        "Raita",
         "Chicken Biryani",
         "Aata Roti/Multigrain Roti",
         "Lizzat Papad",
