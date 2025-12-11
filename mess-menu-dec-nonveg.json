@@ -3,12 +3,8 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Idli & Medu Vada / Fried Idli",
-        "Sambhar",
-        "Coconut Chutney",
-        "Tomato Chutney",
+        "Poha and Jalebi",
         "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
         "Butter",
         "Jam",
         "Sugar",
@@ -16,19 +12,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Moong Dal, Malai Kofta, Bhendi Peanut Fry, Seasonal Fruits (2 types)",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Moong Dal",
-        "Sick Moong Daal",
-        "Raw banana Fry",
-        "Veg Manchurian",
         "Curd",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -39,8 +31,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Dhokla",
-        "Chutney(Mint)",
+        "Veg Cutlet, Ketchup",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -49,20 +40,14 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Mix Dal, Mutter Masala, Boondi",
+        "Egg Butter Masala",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Veg Khichdi",
-        "Dal Tadka(Chana)",
-        "Sick dal",
-        "Gobi Masala Dar",
-        "Aloo beans Curry",
         "Curd",
         "Fryums",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
-        "Ghee",
-        "Stffed Paratha(Mix Veg/Gobhi)",
-        "Rasmalai"
+        "Ghee"
       ]
     }
   },
@@ -70,10 +55,9 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Aloo Methi stuffed Prath with Lusun Chutney",
+        "Luchi (Poori) and Ghugni",
+        "Banana(2)",
         "Curd",
-        "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
         "Butter",
         "Jam",
         "Sugar",
@@ -81,19 +65,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Rajma Dal, Dum Aloo Banarasi, Mix Veg Dry",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Rajma Dal",
-        "Sick Rajma daal",
-        "Bhendi Peanut fry",
-        "Hariyali Kofta",
         "Lassi",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -104,8 +84,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Dahi Papdi",
-        "Chutney(Green+Red)",
+        "Bread Pakora, Ketchup",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -114,18 +93,13 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Khichdi, Aloo Gobi, Veg Chatpata",
         "Aata Roti/Multigrain Roti",
         "Ragi Roti",
-        "Plain rice",
-        "Ridged Gourd Daal",
-        "Sick Dal",
-        "Aloo Deep fry",
-        "Brinjal mutter curry",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
         "Ghee",
-        "Chole Bhatura",
         "Curd"
       ]
     }
@@ -134,11 +108,9 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Poha (Aloo/Sev)",
-        "Sambhar",
-        "Curd and Jalebi",
+        "Idli/ Fried Idli, Sambhar, Coconut Chutney, Tomato Chutney",
         "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
+        "Curd and Jalebi",
         "Butter",
         "Jam",
         "Sugar",
@@ -146,19 +118,14 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Masoor Dal, Kadhi pakoda, Dry Aloo Masala",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Cucumber Dal",
-        "Sick Cucumber Dal",
-        "Kadhi pakoda",
-        "Achari Aalo / Masala Aalo",
         "Curd",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -169,8 +136,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Veg Cutlet/Pakoda",
-        "Chutney(Green+Red)",
+        "Pyaz Kachori, Chutney",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -179,13 +145,10 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Lasooni Dal Tadka, Veg Korma, Carrot Halwa",
+        "Chicken Butter Masala",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
         "Veg Fried Rice",
-        "Urad Dal",
-        "Sick Dal",
-        "Cabbage pakoda",
-        "Egg Korma",
         "Lizzat Papad",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -198,11 +161,8 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Hara Matar Poorvi and Sabji",
-        "Mint Chutney",
-        "Tomato Chutney",
-        "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
+        "Mix veg paratha, Chutney,Curd",
+        "Banana(2)",
         "Butter",
         "Jam",
         "Sugar",
@@ -210,19 +170,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Channa Dal Fry, Dahi Baingan, Chilly Potato, Seasonal Fruits (2 types)",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Dal Makhani",
-        "Sick Dal",
-        "Gobi 65",
-        "Dahi Baigan",
         "Lassi",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -233,8 +189,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Samosa",
-        "Chutney+Sause",
+        "Dhokla, Chutney / Sweet Corn",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -243,12 +198,8 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Veg Fried Rice, Pindi Chole, Capsicum Masala, Dosa",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Palal Dal",
-        "Sick Dal",
-        "Cauliflower fry",
-        "Patodi Masal",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -261,12 +212,8 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Masala Dosa",
-        "Sambhar",
-        "Coconut Chutney",
-        "Lusun Chutney",
+        "Uttapam, Sambhar, Coconut Chutney",
         "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
         "Butter",
         "Jam",
         "Sugar",
@@ -274,19 +221,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Dal Panchmahal, Cauliflower Fry, Hariyali Kofta",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Chole Masala",
-        "Sick Dal",
-        "Mixed Vegetable dry",
-        "Bhendi Do Pyaja",
         "Curd",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -297,9 +240,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Pav Bhaji",
-        "Chutney(Green+Red)",
-        "Chopped Onion",
+        "Samosa, Chutney",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -308,18 +249,13 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Moong Dal,Veg Biriyani, Alu Soyabin Dry,  Milk Barfi/Coconut Barfi",
+        "Egg curry",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Navratan Pulao",
-        "Masoor Dal",
-        "Sick Dal",
-        "Beetroot Poriyal",
-        "Egg Curry",
         "Fryums",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
-        "Ghee",
-        "Kalakand"
+        "Ghee"
       ]
     }
   },
@@ -327,12 +263,10 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Aloo Pyaz Paratha/Mix Veg paratha",
-        "Curd",
-        "Tomato Chutney",
-        "Pickle",
+        "Aloo Pyaz Paratha, Curd, Mint Chutney, Pickle",
         "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
+        "Curd",
+        "Pickle",
         "Butter",
         "Jam",
         "Sugar",
@@ -340,19 +274,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Dal Tadka, Cabbage Pakoda, Mix Vegetables in Hot Garlic Sauce",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Dal Tadka(Masoor)",
-        "Sick Dal",
-        "Brinjal & Capsicum Fry",
-        "Corn Palak Masala",
         "Curd",
         "Salad(Cucumber+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -363,8 +293,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Corn Chaat",
-        "Sause",
+        "Pav Bhaji",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -373,18 +302,12 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Plain rice, Urad Dal, Chole Bhature, Aloo Palak",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Daal Dhoiki",
-        "Sick Dal",
-        "Soyabeen Fry",
-        "Gutti vankaya",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
-        "Ghee",
-        "Dosa",
-        "Mint Chutney"
+        "Ghee"
       ]
     }
   },
@@ -392,12 +315,8 @@
     "BREAKFAST": {
       "time": "7:30 AM - 10:30 AM",
       "items": [
-        "Uttapam",
-        "Sambhar",
-        "Coconut chutney",
-        "Lusun Chutney",
+        "Masala Dosa, Sambhar, Coconut Chutney",
         "Boiled egg (2)",
-        "Toasted white/whole wheat bread",
         "Butter",
         "Jam",
         "Sugar",
@@ -405,19 +324,15 @@
         "Sprouts-boiled chana",
         "Milk(Non-Toned)",
         "Tea",
-        "Coffee",
-        "Bournvita/Horlicks"
+        "Coffee"
       ]
     },
     "LUNCH": {
       "time": "12:30 PM - 2:30 PM",
       "items": [
+        "Dal Makhani, Veg Manchurian, Aloo Deep Fry",
         "Aata Roti/Multigrain Roti",
         "Plain Rice",
-        "Channa dal fry",
-        "Sick Dal",
-        "Cabbage carrot Fry",
-        "Tomato Drumstick Curry",
         "Curd",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
@@ -428,9 +343,7 @@
     "SNACKS": {
       "time": "5:30 PM - 6:30 PM",
       "items": [
-        "Pani Puri with mashed masala aloo and chana",
-        "Chutney(Green+Red)",
-        "Chopped Onion",
+        "Pani Puri",
         "Milk(Non-Toned)",
         "Tea",
         "Coffee"
@@ -439,17 +352,13 @@
     "DINNER": {
       "time": "7:45 PM - 10:30 PM",
       "items": [
+        "Dal Tadka, Aloo Mutter Curry, Gulab Jamun,Raita",
+        "Chicken Biryani",
         "Aata Roti/Multigrain Roti",
-        "Plain rice",
-        "Lasooni Daal Tadka",
-        "Sick dal",
-        "Cluster beans fry",
-        "Chicken Biryani(Basmati)",
         "Lizzat Papad",
         "Salad(Beetroot+tomato+onion+carrot+lemon+chilli)",
         "Pickle",
-        "Ghee",
-        "Carrot Halwa"
+        "Ghee"
       ]
     }
   }
