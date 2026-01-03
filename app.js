@@ -4,8 +4,8 @@
    CONFIG
 ---------------------------------------------------------- */
 const MENU_CONFIG = {
-  veg: { label: "Veg Mess", file: "mess-menu-dec-veg.json" },
-  nonveg: { label: "Non-Veg Mess", file: "mess-menu-dec-nonveg.json" }
+  veg: { label: "Veg Mess", file: "mess-menu-veg.json" },
+  nonveg: { label: "Non-Veg Mess", file: "mess-menu-nonveg.json" }
 };
 
 let currentMessKey = "veg";

@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v2";   // 🔼 change this every update
+const CACHE_VERSION = "v2.1";   // 🔼 change this every update
 const CACHE_NAME = `iitj-mess-menu-${CACHE_VERSION}`;
 
 const OFFLINE_URLS = [
