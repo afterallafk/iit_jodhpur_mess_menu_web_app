@@ -1,6 +1,8 @@
 {
-  "name": "IITJ Mess Menu",
-  "short_name": "IITJ Mess Menu",
+  "name": "IIT Jodhpur Mess Menu",
+  "short_name": "Mess Menu",
+  "description": "Daily mess menu for IIT Jodhpur",
+  "version": "1.2.0",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
