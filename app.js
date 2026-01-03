@@ -1,408 +1,180 @@
 "use strict";
 
-// -----------------------------------------------------------------------------
-// CONFIG
-// -----------------------------------------------------------------------------
-
-// Mess types and their JSON files (same folder as index.html)
+/* ---------------------------------------------------------
+   CONFIG
+---------------------------------------------------------- */
 const MENU_CONFIG = {
-  veg: {
-    label: "Veg Mess",
-    file: "mess-menu-dec-veg.json",      // VEG file
-  },
-  nonveg: {
-    label: "Non-Veg Mess",
-    file: "mess-menu-dec-nonveg.json",    // NON-VEG file
-  },
+  veg: { label: "Veg Mess", file: "mess-menu-dec-veg.json" },
+  nonveg: { label: "Non-Veg Mess", file: "mess-menu-dec-nonveg.json" }
 };
 
 let currentMessKey = "veg";
 
-// Order of days and meals for consistent UI
-const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-// Meals in your JSON are uppercase: BREAKFAST, LUNCH, SNACKS, DINNER
-const MEAL_ORDER = ["BREAKFAST", "LUNCH", "SNACKS", "DINNER"];
+const DAY_ORDER = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const MEAL_ORDER = ["BREAKFAST","LUNCH","SNACKS","DINNER"];
 
-// -----------------------------------------------------------------------------
-// STATE
-// -----------------------------------------------------------------------------
-
-// { Day: { Meal: { time: string, items: string[] } } }
 let menuData = {};
 let availableDays = [];
 let activeDay = null;
 
-// -----------------------------------------------------------------------------
-// DOM REFERENCES
-// -----------------------------------------------------------------------------
-
+/* ---------------------------------------------------------
+   DOM
+---------------------------------------------------------- */
 const dayButtonsContainer = document.getElementById("dayButtonsContainer");
-const dayEmptyState = document.getElementById("dayEmptyState");
+const mealsGrid = document.getElementById("mealsGrid");
 const mealsTitle = document.getElementById("mealsTitle");
 const mealsSubtitle = document.getElementById("mealsSubtitle");
-const mealsGrid = document.getElementById("mealsGrid");
-const mealsEmptyState = document.getElementById("mealsEmptyState");
-const mealsError = document.getElementById("mealsError");
-const currentDayLabel = document.getElementById("currentDayLabel");
 const dataStatusText = document.getElementById("dataStatusText");
 const lastUpdatedBadge = document.getElementById("lastUpdatedBadge");
-const todayBadge = document.getElementById("todayBadge");
-const todayText = document.getElementById("todayText");
+const currentDayLabel = document.getElementById("currentDayLabel");
 
-// -----------------------------------------------------------------------------
-// BOOTSTRAP
-// -----------------------------------------------------------------------------
-
-// window.addEventListener("DOMContentLoaded", () => {
-//   currentDayLabel.textContent = getTodayName();
-
-//   if (!JSON_URL) {
-//     showError("No JSON_URL configured.");
-//     return;
-//   }
-
-//   dataStatusText.textContent = "Loading menu from JSON…";
-//   loadMenuFromJson(JSON_URL);
-// });
-
+/* ---------------------------------------------------------
+   INIT
+---------------------------------------------------------- */
 window.addEventListener("DOMContentLoaded", () => {
   currentDayLabel.textContent = getTodayName();
   initMessSwitching();
 });
 
-// -----------------------------------------------------------------------------
-// MESS SWITCHING (Veg / Non-Veg)
-// -----------------------------------------------------------------------------
-
-function initMessSwitching() {
-  // Restore last choice from localStorage, if valid
-  const saved = localStorage.getItem("messType");
-  if (saved && MENU_CONFIG[saved]) {
-    currentMessKey = saved;
-  }
-
-  setupMessToggleUI();
-  loadCurrentMess();
+/* ---------------------------------------------------------
+   UTIL
+---------------------------------------------------------- */
+function getTodayName() {
+  return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date().getDay()];
 }
 
-function setupMessToggleUI() {
-  const buttons = document.querySelectorAll(".mess-toggle-btn");
-  if (!buttons || !buttons.length) {
-    return;
-  }
+function formatMealName(m) {
+  return m.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+}
 
-  buttons.forEach((btn) => {
+function mealIcon(type) {
+  return {
+    BREAKFAST: "🍳",
+    LUNCH: "🍛",
+    SNACKS: "☕",
+    DINNER: "🍽️"
+  }[type] || "🍽️";
+}
+
+/* ---------------------------------------------------------
+   Mess switching
+---------------------------------------------------------- */
+function initMessSwitching() {
+  const saved = localStorage.getItem("messType");
+  if (saved && MENU_CONFIG[saved]) currentMessKey = saved;
+
+  document.querySelectorAll(".mess-toggle-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      const key = btn.dataset.mess;
-      if (!MENU_CONFIG[key] || key === currentMessKey) return;
-
-      currentMessKey = key;
-      localStorage.setItem("messType", key);
+      currentMessKey = btn.dataset.mess;
+      localStorage.setItem("messType", currentMessKey);
       updateMessToggleUI();
       loadCurrentMess();
     });
   });
 
   updateMessToggleUI();
+  loadCurrentMess();
 }
 
 function updateMessToggleUI() {
-  const buttons = document.querySelectorAll(".mess-toggle-btn");
-  buttons.forEach((btn) => {
-    const key = btn.dataset.mess;
-    btn.classList.toggle("active", key === currentMessKey);
+  document.querySelectorAll(".mess-toggle-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.mess === currentMessKey);
   });
 }
 
+/* ---------------------------------------------------------
+   Load menu
+---------------------------------------------------------- */
 function loadCurrentMess() {
-  const config = MENU_CONFIG[currentMessKey];
-  if (!config) {
-    showError("Unknown mess type: " + currentMessKey);
-    return;
-  }
+  const cfg = MENU_CONFIG[currentMessKey];
+  // dataStatusText.textContent = "Loading " + cfg.label + " menu…";
+  dataStatusText.textContent = "Loaded: " + cfg.file;
 
-  if (dataStatusText) {
-    dataStatusText.textContent = "Loading " + config.label + " menu…";
-  }
-
-  loadMenuFromJson(config.file, config.label);
-}
-
-// -----------------------------------------------------------------------------
-// LOAD FROM JSON
-// -----------------------------------------------------------------------------
-
-function loadMenuFromJson(url, messLabel) {
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("HTTP " + response.status);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (!data || typeof data !== "object") {
-        throw new Error("Invalid JSON structure");
-      }
+  fetch(cfg.file)
+    .then(r => r.json())
+    .then(data => {
       menuData = data;
-      availableDays = Object.keys(menuData || {});
-      updateUIAfterLoad(url, messLabel);
-    })
-    .catch((err) => {
-      console.error(err);
-      const label = messLabel ? ` (${messLabel})` : "";
-      showError("Could not load menu JSON from " + url + label + ".");
+      availableDays = Object.keys(data);
+      renderDayButtons();
+      activeDay = availableDays.includes(getTodayName()) ? getTodayName() : availableDays[0];
+      renderMealsForActiveDay();
+      dataStatusText.textContent = "Loaded: " + cfg.file;
+      // lastUpdatedBadge.textContent = "Updated: " + new Date().toLocaleString();
     });
 }
 
-// -----------------------------------------------------------------------------
-// UI UPDATE AFTER LOAD
-// -----------------------------------------------------------------------------
-
-function updateUIAfterLoad(fileLabel, messLabel) {
-  if (!availableDays.length) {
-    showError("Menu JSON loaded, but no days were found.");
-    return;
-  }
-
-  renderDayButtons();
-
-  // Select today's day if available, otherwise the first day in order
-  activeDay = chooseInitialActiveDay();
-  renderMealsForActiveDay();
-
-  const niceLabel = messLabel ? `${fileLabel} (${messLabel})` : fileLabel;
-  dataStatusText.textContent = "Loaded: " + niceLabel;
-
-  const now = new Date();
-  lastUpdatedBadge.textContent =
-    "Updated: " +
-    now.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }) +
-    " " +
-    now.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
-  dayEmptyState.style.display = "none";
-  mealsEmptyState.style.display = "none";
-}
-
-function showError(message) {
-  mealsError.textContent = message;
-  mealsError.style.display = "block";
-  mealsTitle.textContent = "Could not load menu";
-  mealsSubtitle.textContent =
-    "Ensure the menu JSON file is present and follows the expected structure.";
-  dataStatusText.textContent = "Error loading data";
-
-  mealsGrid.innerHTML = "";
-  if (dayButtonsContainer) dayButtonsContainer.innerHTML = "";
-  currentDayLabel.textContent = getTodayName();
-  dayEmptyState.style.display = "flex";
-  mealsEmptyState.style.display = "flex";
-  todayBadge.style.display = "none";
-}
-
-// -----------------------------------------------------------------------------
-// DAY BUTTONS + TODAY HIGHLIGHT
-// -----------------------------------------------------------------------------
-
+/* ---------------------------------------------------------
+   Days
+---------------------------------------------------------- */
 function renderDayButtons() {
-  if (!dayButtonsContainer) return;
-
   dayButtonsContainer.innerHTML = "";
 
-  const orderedDays = [...availableDays].sort((a, b) => {
-    const ia = DAY_ORDER.indexOf(a);
-    const ib = DAY_ORDER.indexOf(b);
-    if (ia !== -1 && ib !== -1) return ia - ib;
-    if (ia !== -1) return -1;
-    if (ib !== -1) return 1;
-    return a.localeCompare(b);
-  });
+  availableDays
+    .sort((a,b)=>DAY_ORDER.indexOf(a)-DAY_ORDER.indexOf(b))
+    .forEach(day => {
+      const btn = document.createElement("button");
+      btn.className = "day-btn";
+      btn.dataset.day = day;
 
-  const todayName = getTodayName();
-  const hasToday = availableDays.includes(todayName);
+      btn.innerHTML = `
+        <div class="day-btn-main">${day}</div>
+        <div class="day-btn-sub">${day === getTodayName() ? "Today" : "Tap to view"}</div>
+      `;
 
-  if (hasToday) {
-    todayBadge.style.display = "inline-flex";
-    todayText.textContent = "Today: " + todayName;
-  } else {
-    todayBadge.style.display = "none";
-  }
+      btn.onclick = () => {
+        activeDay = day;
+        renderMealsForActiveDay();
+      };
 
-  orderedDays.forEach((day) => {
-    const btn = document.createElement("button");
-    btn.className = "day-btn";
-    btn.dataset.day = day;
+      dayButtonsContainer.appendChild(btn);
+    });
+}
 
-    const main = document.createElement("div");
-    main.className = "day-btn-main";
-    main.textContent = day;
+/* ---------------------------------------------------------
+   Meals
+---------------------------------------------------------- */
+function renderMealsForActiveDay() {
+  mealsTitle.textContent = activeDay + " Menu";
+  mealsSubtitle.textContent = "Complete meal plan for " + activeDay;
+  mealsGrid.innerHTML = "";
 
-    const sub = document.createElement("div");
-    sub.className = "day-btn-sub";
-    sub.textContent = day === todayName ? "Today" : "Tap to view menu";
+  Object.keys(menuData[activeDay])
+    .sort((a,b)=>MEAL_ORDER.indexOf(a)-MEAL_ORDER.indexOf(b))
+    .forEach(meal => {
+      const entry = menuData[activeDay][meal];
 
-    btn.appendChild(main);
-    btn.appendChild(sub);
+      const card = document.createElement("div");
+      card.className = "meal-card";
 
-    btn.addEventListener("click", () => {
-      activeDay = day;
-      renderMealsForActiveDay();
+      card.innerHTML = `
+        <div class="meal-header-line">
+          <div class="meal-name">${mealIcon(meal)} ${formatMealName(meal)}</div>
+          <div class="meal-tag">${entry.time || "N/A"}</div>
+        </div>
+      `;
+
+      const items = document.createElement("div");
+      items.className = "meal-items";
+
+      entry.items.forEach(i => {
+        const span = document.createElement("span");
+        span.className = "meal-item";
+        span.textContent = i;
+        items.appendChild(span);
+      });
+
+      card.appendChild(items);
+      mealsGrid.appendChild(card);
     });
 
-    dayButtonsContainer.appendChild(btn);
-  });
+  document.querySelectorAll(".day-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.day === activeDay)
+  );
 }
 
-function chooseInitialActiveDay() {
-  const todayName = getTodayName();
-  if (availableDays.includes(todayName)) {
-    return todayName;
-  }
-
-  const orderedAvailable = [...availableDays].sort((a, b) => {
-    const ia = DAY_ORDER.indexOf(a);
-    const ib = DAY_ORDER.indexOf(b);
-    if (ia !== -1 && ib !== -1) return ia - ib;
-    if (ia !== -1) return -1;
-    if (ib !== -1) return 1;
-    return a.localeCompare(b);
-  });
-
-  return orderedAvailable[0];
-}
-
-// -----------------------------------------------------------------------------
-// RENDER MEALS FOR ACTIVE DAY
-// -----------------------------------------------------------------------------
-
-function renderMealsForActiveDay() {
-  if (!activeDay || !menuData[activeDay]) {
-    mealsTitle.textContent = "No day selected";
-    mealsSubtitle.textContent = "Pick a day from the left panel.";
-    mealsGrid.innerHTML = "";
-    mealsEmptyState.style.display = "flex";
-    currentDayLabel.textContent = getTodayName();
-    setActiveDayButton(null);
-    return;
-  }
-
-  mealsTitle.textContent = activeDay + " Menu";
-  mealsSubtitle.textContent = "Complete meal plan for " + activeDay + ".";
-
-  const todayName = getTodayName();
-  currentDayLabel.textContent = todayName;
-
-  mealsGrid.innerHTML = "";
-  mealsError.style.display = "none";
-  mealsEmptyState.style.display = "none";
-
-  const mealsForDay = menuData[activeDay];
-  const mealTypes = Object.keys(mealsForDay || {});
-
-  const orderedMeals = [...mealTypes].sort((a, b) => {
-    const ia = MEAL_ORDER.indexOf(a);
-    const ib = MEAL_ORDER.indexOf(b);
-    if (ia !== -1 && ib !== -1) return ia - ib;
-    if (ia !== -1) return -1;
-    if (ib !== -1) return 1;
-    return a.localeCompare(b);
-  });
-
-  orderedMeals.forEach((mealType) => {
-    const entry = mealsForDay[mealType];
-    if (!entry) return;
-
-    const card = document.createElement("div");
-    card.className = "meal-card";
-
-    const headerLine = document.createElement("div");
-    headerLine.className = "meal-header-line";
-
-    const name = document.createElement("div");
-    name.className = "meal-name";
-    name.textContent = formatMealName(mealType);
-
-    const tag = document.createElement("div");
-    tag.className = "meal-tag";
-    tag.textContent = entry.time ? entry.time : "Time: N/A";
-
-    headerLine.appendChild(name);
-    headerLine.appendChild(tag);
-    card.appendChild(headerLine);
-
-    // const time = document.createElement("div");
-    // time.className = "meal-time";
-    // time.textContent = entry.time
-    //   ? "Serving time: " + entry.time
-    //   : "Serving time not specified.";
-
-    // card.appendChild(time);
-
-    const itemsContainer = document.createElement("div");
-    itemsContainer.className = "meal-items";
-
-    if (Array.isArray(entry.items) && entry.items.length) {
-      entry.items.forEach((itemText) => {
-        const span = document.createElement("span");
-        span.textContent = itemText;
-        itemsContainer.appendChild(span);
-      });
-    } else {
-      itemsContainer.textContent = "No items listed for this meal.";
-    }
-
-    card.appendChild(itemsContainer);
-    mealsGrid.appendChild(card);
-  });
-
-  setActiveDayButton(activeDay);
-}
-
-function setActiveDayButton(dayName) {
-  if (!dayButtonsContainer) return;
-  const buttons = dayButtonsContainer.querySelectorAll(".day-btn");
-  buttons.forEach((btn) => {
-    if (btn.dataset.day === dayName) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
-  });
-}
-
-// -----------------------------------------------------------------------------
-// UTIL
-// -----------------------------------------------------------------------------
-
-function getTodayName() {
-  const jsDay = new Date().getDay(); // 0 = Sunday
-  const names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  return names[jsDay];
-}
-
-function formatMealName(mealType) {
-  // Convert "BREAKFAST" -> "Breakfast", "SPECIAL LUNCH" -> "Special Lunch"
-  return String(mealType)
-    .toLowerCase()
-    .split(" ")
-    .filter(Boolean)
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
-}
-
-// Register service worker for PWA
+/* ---------------------------------------------------------
+   Service worker
+---------------------------------------------------------- */
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./sw.js")
-      .catch((err) => console.error("Service worker registration failed:", err));
-  });
+  navigator.serviceWorker.register("./sw.js");
 }

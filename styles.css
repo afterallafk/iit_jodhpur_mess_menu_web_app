@@ -1,91 +1,81 @@
 /* ---------------------------------------------------------
-   Font: Product Sans
+   Font
 ---------------------------------------------------------- */
 @font-face {
   font-family: "Product Sans";
   src: url("ProductSans-Regular.ttf") format("truetype");
   font-weight: 400;
-  font-style: normal;
 }
 
 /* ---------------------------------------------------------
    Theme
 ---------------------------------------------------------- */
-
 :root {
-  --bg: #000;
-  --card: #fff;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-soft: #f1f3f9;
 
-  --text-main: #0a0a0a;
-  --text-soft: #363636;
-  --text-muted: #6d6d6d;
+  --primary: #111111;
+  --accent: #5b5fef;
 
-  --radius-xl: 28px;
-  --radius-lg: 20px;
+  --text-main: #111;
+  --text-soft: #444;
+  --text-muted: #777;
+
+  --radius-xl: 24px;
+  --radius-lg: 18px;
   --radius-md: 14px;
   --radius-pill: 999px;
 
-  --shadow-card: 0 18px 48px rgba(0, 0, 0, 0.28);
-  --shadow-hover: 0 22px 65px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-md: 0 10px 28px rgba(0,0,0,0.12);
 
-  --motion-fast: 140ms ease-out;
-  --motion-med: 220ms ease-out;
+  --motion-fast: 120ms ease;
 }
 
 /* ---------------------------------------------------------
    Body
 ---------------------------------------------------------- */
-
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "Product Sans", sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-main);
   background: var(--bg);
   display: flex;
   justify-content: center;
-  padding: 28px;
+  padding: 24px;
 }
 
 /* ---------------------------------------------------------
-   App container
+   App shell
 ---------------------------------------------------------- */
-
 .app-shell {
   width: 100%;
   max-width: 1240px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-/* ---------- Top app bar: Material You style card ---------- */
-
+/* ---------------------------------------------------------
+   Top bar
+---------------------------------------------------------- */
 .top-bar {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 10px 18px;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.40);
-  transform: translateY(0);
-  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
-  margin-bottom: 4px;
-}
-
-.top-bar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 12px 18px;
+  box-shadow: var(--shadow-md);
 }
 
 .top-bar-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
 }
-
-/* Left side: logo + title */
 
 .title-block {
   display: flex;
@@ -94,111 +84,44 @@ body {
 }
 
 .title-logo {
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
-  min-height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
   display: flex;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
-  overflow: hidden;
+  justify-content: center;
 }
 
 .title-logo img {
-  width: 86%;
-  height: 86%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
-  object-position: center;
 }
 
 .title-text-primary {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: #111111;
 }
 
 .title-text-secondary {
   font-size: 13px;
-  color: #7a7a7a;
-}
-
-/* Right side: data source chip */
-
-.upload-block {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.file-hint {
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: right;
-}
-
-.chip-label {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: #f3f3f3;
-  color: #555;
-  font-size: 11px;
-  margin-right: 6px;
-}
-
-.chip-value {
-  font-weight: 600;
-  font-size: 12px;
-  color: #222;
-}
-
-.file-hint-sub {
-  color: #8a8a8a;
-  font-size: 11px;
-}
-
-/* Responsive: stack logo + text + chip on small screens */
-
-@media (max-width: 768px) {
-  .top-bar-main {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .upload-block {
-    justify-content: flex-start;
-  }
-
-  .file-hint {
-    text-align: left;
-  }
+  color: var(--text-muted);
 }
 
 /* ---------------------------------------------------------
-   Status bar – floating white card with pills
+   Status bar
 ---------------------------------------------------------- */
-
 .status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;   /* like top-bar-main */
-  gap: 10px;
-  flex-wrap: wrap;
-
-  background: var(--card);
-  color: var(--text-main);
+  background: var(--surface);
   padding: 10px 14px;
   border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-card);
-}
-
-.status-bar:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
 }
 
 .status-left,
@@ -209,129 +132,80 @@ body {
   flex-wrap: wrap;
 }
 
-/* small chips inside status bar */
-
 .pill {
+  background: var(--surface-soft);
+  padding: 7px 14px;
   border-radius: var(--radius-pill);
-  padding: 8px 14px;
   font-size: 13px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  max-width: 100%;
-  white-space: normal;
-  flex-wrap: wrap;
-
-  background: #f3f3f3;
-  color: var(--text-soft);
-  border: none;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .pill-accent {
   background: #111;
-  color: #f5f5f5;
-}
-
-.pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #111;
+  color: #fff;
 }
 
 .pill-badge {
   font-size: 11px;
   padding: 5px 10px;
   border-radius: var(--radius-pill);
-  background: #f3f3f3;
+  background: var(--surface-soft);
   color: var(--text-muted);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* ---------- Veg / Non-Veg toggle in status bar ---------- */
-
+/* Veg / Non-Veg toggle */
 .mess-toggle {
   display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px;
+  background: var(--surface-soft);
+  padding: 4px;
   border-radius: var(--radius-pill);
-  background: #f3f3f3;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .mess-toggle-btn {
   border: none;
-  outline: none;
-  border-radius: var(--radius-pill);
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 500;
   background: transparent;
-  color: var(--text-soft);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition:
-    background var(--motion-fast),
-    color var(--motion-fast),
-    transform var(--motion-fast),
-    box-shadow var(--motion-fast);
-}
-
-.mess-toggle-btn:hover {
-  transform: translateY(-1px);
+  font-size: 12px;
 }
 
 .mess-toggle-btn.active {
-  background: #111;
+  background: var(--accent);
   color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* ---------------------------------------------------------
    Layout grid
 ---------------------------------------------------------- */
-
 .content-grid {
   display: grid;
   grid-template-columns: 1.1fr 2fr;
-  gap: 24px;
+  gap: 20px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .content-grid {
     grid-template-columns: 1fr;
   }
+
+  .meals-card { order: 1; }
+  .day-card { order: 2; }
 }
 
 /* ---------------------------------------------------------
-   MAIN FLOATING WHITE CARDS
+   Cards
 ---------------------------------------------------------- */
-
 .day-card,
 .meals-card {
-  background: var(--card);
-  color: var(--text-main);
+  background: var(--surface);
+  padding: 20px;
   border-radius: var(--radius-lg);
-  padding: 22px;
-  border: none;
-  box-shadow: var(--shadow-card);
-  transform: translateY(0px);
-  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
-}
-
-.day-card:hover,
-.meals-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 /* ---------------------------------------------------------
-   DAY BUTTONS
+   Day buttons
 ---------------------------------------------------------- */
-
 .day-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -339,22 +213,36 @@ body {
 }
 
 .day-btn {
-  cursor: pointer;
-  background: #fff;
-  color: var(--text-main);
-  padding: 14px 14px;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-card);
+  background: var(--surface-soft);
+  padding: 14px;
+  border-radius: var(--radius-md);
   border: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-height: 66px;
-  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+  cursor: pointer;
+  transition: background var(--motion-fast);
+}
+
+.day-btn:hover {
+  background: #e9ebf5;
+}
+
+.day-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* MAIN label (Monday, Tuesday...) */
+.day-btn.active .day-btn-main {
+  color: #ffffff;
+}
+
+/* SUB label (Today / Tap to view) */
+.day-btn.active .day-btn-sub {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  letter-spacing: 0.2px;
 }
 
 .day-btn-main {
-  font-size: 15px;
   font-weight: 600;
 }
 
@@ -363,31 +251,12 @@ body {
   color: var(--text-muted);
 }
 
-.day-btn:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
-}
-
-/* ACTIVE DAY: black pill */
-
-.day-btn.active {
-  background: #111;
-  color: #fff;
-  box-shadow: var(--shadow-hover);
-}
-
-.day-btn.active .day-btn-sub {
-  color: #dddddd;
-}
-
 /* ---------------------------------------------------------
-   MEALS SECTION
+   Meals
 ---------------------------------------------------------- */
-
 .meals-title {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--text-main);
 }
 
 .meals-subtitle {
@@ -395,92 +264,98 @@ body {
   color: var(--text-soft);
 }
 
-/* ---------------------------------------------------------
-   MEAL CARDS
----------------------------------------------------------- */
-
 .meals-grid {
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 16px;
 }
 
+/* Meal card */
 .meal-card {
-  background: var(--card);
-  color: var(--text-main);
-  padding: 14px;
+  background: var(--surface);
+  padding: 16px;
   border-radius: var(--radius-md);
-  border: none;
-  box-shadow: var(--shadow-card);
-  transform: translateY(0px);
-  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+  box-shadow: var(--shadow-sm);
 }
 
-.meal-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+/* Header */
+.meal-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
-
-/* Meal name */
 
 .meal-name {
   font-size: 16px;
   font-weight: 700;
-  color: var(--text-main);
 }
 
-/* time text */
-
-.meal-time {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
+.meal-tag {
+  font-size: 12px;
+  background: var(--surface-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
 }
 
-/* Meal items */
-
+/* Items as chips */
 .meal-items {
-  font-size: 14px;
-  color: var(--text-soft);
-  line-height: 1.58;
-  margin-top: 2px;
-
-  /* NEW: allow breaking very long tokens */
-  overflow-wrap: anywhere;    /* modern browsers */
-  word-wrap: break-word;      /* older name */
-  word-break: break-word;     /* extra safety */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.meal-items span + span::before {
-  content: " • ";
-  opacity: 0.45;
+.meal-item {
+  background: var(--surface-soft);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 13px;
 }
 
 /* ---------------------------------------------------------
-   Misc
+   Empty & error
 ---------------------------------------------------------- */
-
-.error-text {
+.empty-state {
+  margin-top: 16px;
   font-size: 13px;
-  color: #b00000;
-}
-
-.note-text {
-  font-size: 12px;
   color: var(--text-muted);
 }
 
-/* ---------- Mobile layout for status bar (same idea as top bar) ---------- */
+.error-text {
+  color: #b00000;
+  font-size: 13px;
+}
 
-@media (max-width: 768px) {
-  .status-bar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* =========================================================
+   Hide developer / backend-only UI elements
+   ========================================================= */
 
-  .status-left,
-  .status-right {
-    width: 100%;
-    justify-content: flex-start;
-  }
+/* Top-right data source block */
+.upload-block {
+  display: none !important;
+}
+
+/* Status bar technical text: "Loaded: mess-menu-dec-veg.json" */
+#dataStatusText {
+  display: none !important;
+}
+
+/* Day panel technical empty state text */
+#dayEmptyState {
+  display: none !important;
+}
+
+/* =========================================================
+   Remove now-unused status bar UI elements
+   ========================================================= */
+
+/* Left black pill (status text container) */
+.status-left .pill-accent {
+  display: none !important;
+}
+
+/* Right "Updated" badge */
+.pill-badge {
+  display: none !important;
 }

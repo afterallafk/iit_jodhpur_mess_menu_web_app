@@ -1,50 +1,60 @@
-const CACHE_NAME = "iitj-mess-menu-v1";
+const CACHE_VERSION = "v2";   // 🔼 change this every update
+const CACHE_NAME = `iitj-mess-menu-${CACHE_VERSION}`;
 
-// List all static assets you want available offline
 const OFFLINE_URLS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
-  "./mess-menu-dec-veg.json",       // Veg
-  "./mess-menu-dec-nonveg.json",    // Non-Veg
-  "./ProductSans-Regular.ttf",
-  "./image_web_app/IITJ_COLOURED_192.png",
-  "./image_web_app/IITJ_COLOURED_512.png"
+  "./mess-menu-dec-veg.json",
+  "./mess-menu-dec-nonveg.json",
+  "./ProductSans-Regular.ttf"
 ];
 
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_URLS))
   );
 });
 
 self.addEventListener("activate", (event) => {
-  // Clean old caches if you change CACHE_NAME
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      )
-    )
+    Promise.all([
+      caches.keys().then((keys) =>
+        Promise.all(
+          keys.map((key) => {
+            if (key !== CACHE_NAME) {
+              return caches.delete(key);
+            }
+          })
+        )
+      ),
+      self.clients.claim()
+    ])
   );
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) =>
+            cache.put(event.request, copy)
+          );
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      // Network-first with cache fallback for dynamic requests if needed
-      return (
-        cached ||
-        fetch(event.request).catch(() =>
-          // If fetch fails (offline) and not in cache, just return cached index if available
-          caches.match("./index.html")
-        )
-      );
+      return cached || fetch(event.request);
     })
   );
 });
