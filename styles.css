@@ -208,8 +208,13 @@ body {
 ---------------------------------------------------------- */
 .day-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Always 3 per row */
   gap: 12px;
+}
+
+.day-card {
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
 }
 
 .day-btn {
@@ -358,4 +363,15 @@ body {
 /* Right "Updated" badge */
 .pill-badge {
   display: none !important;
+}
+
+/* Tablet-specific fix */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .day-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr 1.6fr;
+  }
 }
