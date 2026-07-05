@@ -2,7 +2,7 @@
   "name": "IIT Jodhpur Mess Menu",
   "short_name": "Mess Menu",
   "description": "Daily mess menu for IIT Jodhpur",
-  "version": "3.0.1,
+  "version": "3.0.1",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
